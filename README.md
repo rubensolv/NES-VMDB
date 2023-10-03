@@ -1,6 +1,7 @@
 # NesToMidGeneration
 FDG 2024 NES project.
-#Important links
+
+# Relevant links
 
 Nes longplay videos (library)
 https://www.youtube.com/watch?v=ezydTKjg_nE&list=PL3gSj_kh1fHtxy0_CDUwa6UPCO3PSf87-
