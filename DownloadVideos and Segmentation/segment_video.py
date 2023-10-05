@@ -69,7 +69,7 @@ if __name__ == "__main__":
      # Parse arguments
     parser = argparse.ArgumentParser(description='train_ftm.py')
     parser.add_argument('--video', type=str, required=True, help="Path to input video.")
-    parser.add_argument('--scenes', type=str, required=True, help="Path to input video.")
+    parser.add_argument('--scenes', type=str, required=True, help="Path with cute scenes.")
     args = parser.parse_args()
 
     # Create dir with video name
