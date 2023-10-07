@@ -3,20 +3,24 @@ import argparse
 import numpy as np
 # from pydub import AudioSegment
 from pydub import AudioSegment, silence
+from multiprocessing import Process
+from multiprocessing import Semaphore
 
 class Mp3_detector():
     
-    def __init__(self, dir_in, dir_out, min_silence=1):
-        self.audio_stream = dir_in
+    def __init__(self, path_file_in, dir_out, min_silence=1):
+        self.audio_stream = path_file_in
         self.output_dir = dir_out
         self.min_silence_duration  = min_silence
+        file_name = os.path.basename(path_file_in)
+        self.name = os.path.splitext(file_name)[0]
     
         # Function to detect song transitions based on silence segments
-    def detect_transitions(self, audio_stream):
-        myaudio = AudioSegment.from_mp3(audio_stream)
+    def detect_transitions(self):
+        myaudio = AudioSegment.from_mp3(self.audio_stream)
         dBFS=myaudio.dBFS
         transitions = silence.detect_nonsilent(myaudio, min_silence_len=self.min_silence_duration*1000, silence_thresh=dBFS-16)
-        print(transitions)
+        #print(transitions)
         return transitions
 
     def save_timestamps(self,transitions, output_dir="output/"):
@@ -24,7 +28,7 @@ class Mp3_detector():
         os.makedirs(output_dir, exist_ok=True)
 
         # Define output filename
-        output_file = os.path.join(output_dir, "transitions.txt")
+        output_file = os.path.join(output_dir, str(self.name)+".txt")
 
         # Convert transition from samples to seconds
         transition_in_secs = [((start/1000),(stop/1000)) for start,stop in transitions] #in sec
@@ -51,11 +55,11 @@ class Mp3_detector():
             # Save the segment as a separate audio file
             output_file = os.path.join(output_dir, f"segment_{i + 1}.mp3")
             segment.export(output_file, format="mp3")
-            print(f"Segment {i + 1} saved as {output_file}")
+            #print(f"Segment {i + 1} saved as {output_file}")
     
     def run(self):
         # Detect song transitions
-        transitions = self.detect_transitions(self.audio_stream, self.min_silence_duration)
+        transitions = self.detect_transitions()
         
         # for transition_duration in transitions:
         #     print(f"{transition_duration} seconds")
@@ -65,4 +69,19 @@ class Mp3_detector():
 
         # Save transitions in a txt file
         return self.save_timestamps(transitions, self.output_dir)
+
+
+if __name__ == "__main__":
+    concurrency = 7    
+    myPathIn = '/home/rubens/pythonProjects/NesToMidGeneration/data/full_mp3_from_mp4/'
+    myPathOut = '/home/rubens/pythonProjects/NesToMidGeneration/data/list_transitions/'
+    
+    total = 0
+    for file in os.listdir(myPathIn):
+    
+        d = Mp3_detector(os.path.join(myPathIn, file), myPathOut)
+        d.run()    
+        total+=1        
+        print('Processing....'+str(total))
+        
         
