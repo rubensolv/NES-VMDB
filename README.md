@@ -11,7 +11,11 @@ https://github.com/chrisdonahue/nesmdb#dataset-information
 
 # Commands
 python3 -m venv venv
+
 pip install --update pip
+
 pip install -r requirements.txt
+
 python3 mp3_transitions_collector_parallel.py
+
 python3 segment_video_sec_parallel.py
