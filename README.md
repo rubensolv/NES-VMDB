@@ -19,3 +19,11 @@ pip install -r requirements.txt
 python3 mp3_transitions_collector_parallel.py
 
 python3 segment_video_sec_parallel.py
+
+# current pipeline
+
+Extrair os mp3 dos videos que estao na pasta youtube_mp4_full usando o ffmpeg; for i in *.mp4; do ffmpeg -i "$i" -vn -ac 1 -f mp3 "${i%.*}".mp3; done
+
+Gerar as transicoes (cut_points) para serem utilizadas para cortar o video usando as classes https://github.com/rubensolv/NesToMidGeneration/blob/main/mp3_transition_collector_parallel.py ou https://github.com/rubensolv/NesToMidGeneration/blob/main/mp3_transition_collector_class.py
+
+Copiar os arquivos gerados (transicoes ou cut_points) e utilizar a classe https://github.com/rubensolv/NesToMidGeneration/blob/main/segment_video_sec_parallel.py para, dado o txt das transicoes, realizar a segmentacao do MP4.
