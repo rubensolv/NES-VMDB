@@ -60,6 +60,7 @@ if __name__ == '__main__':
     parser.add_argument('--url', type=str, default='https://www.youtube.com/watch?v=ezydTKjg_nE&list=PL3gSj_kh1fHtxy0_CDUwa6UPCO3PSf87-')
     #parser.add_argument('--url', type=str, required=True)
     parser.add_argument('--out', type=str, default='/home/rubens/pythonProjects/NesToMidGeneration/data/yt_nes_mp4/')
+    #parser.add_argument('--out', type=str, default='smb://200.235.131.33/youtube_mp4_full/')
     parser.add_argument('--mids', type=str, default='/home/rubens/pythonProjects/NesToMidGeneration/data/nesmdb_midi/train/')
     args = parser.parse_args()
     
@@ -69,27 +70,30 @@ if __name__ == '__main__':
     p = Playlist(args.url)    
     print(f'Playlist Name: {p.title}')
     for i, video in enumerate(p.videos):
-        score, score_fuzzy = similar(video.title, games_titles)
-        if score > 0.7 and score_fuzzy > 80:        
+        #score, score_fuzzy = similar(video.title, games_titles)
+        if True:
+        # if score > 0.7 and score_fuzzy > 80:        
             try:
                 video_title = video.title
             except:
                 video_title = '%03d' % i + "_video"
+            try:
+                video_title = video_title.replace('/', '_')
+                video_title += '.mp4'            
+                video_title = os.path.join(args.out, video_title)
 
-            video_title = video_title.replace('/', '_')
-            video_title += '.mp4'
-            video_title = os.path.join(args.out, video_title)
+                if (not os.path.exists(video_title)) and (not os.path.exists(video_title.replace('.mp4','.mp3'))):
+                    try:
+                        streams = video.streams.filter(file_extension='mp4')
 
-            if not os.path.exists(video_title):
-                try:
-                    streams = video.streams.filter(file_extension='mp4')
-
-                    if len(streams) > 0:
-                        print(f'Downloading video: {video_title}')
-                        streams[0].download(filename=video_title, max_retries=3)
-                    else:
-                        print("No streams found!")
-                except KeyError:
-                    print('No streams found')
-            else:
+                        if len(streams) > 0:
+                            print(f'Downloading video: {video_title}')
+                            streams[0].download(filename=video_title, max_retries=3)
+                        else:
+                            print("No streams found!")
+                    except KeyError:
+                        print('No streams found')
+                else:
+                    print(f'{video_title} already downloaded')
+            except: 
                 print(f'{video_title} already downloaded')

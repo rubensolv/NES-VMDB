@@ -73,13 +73,13 @@ class Mp3_detector():
 
 if __name__ == "__main__":
     concurrency = 7    
-    myPathIn = '/home/rubens/pythonProjects/NesToMidGeneration/data/full_mp3_from_mp4/'
-    myPathOut = '/home/rubens/pythonProjects/NesToMidGeneration/data/list_transitions/'
+    myPathIn = '/home/rubens/pythonProjects/NesToMidGeneration/data/teste_dead/'
+    myPathOut = '/home/rubens/pythonProjects/NesToMidGeneration/data/teste_dead_list_transitions/'
     
     total = 0
     for file in os.listdir(myPathIn):
-    
-        d = Mp3_detector(os.path.join(myPathIn, file), myPathOut)
+        print('Starting file....'+file)
+        d = Mp3_detector(os.path.join(myPathIn, file), myPathOut, min_silence=3)
         d.run()    
         total+=1        
         print('Processing....'+str(total))
