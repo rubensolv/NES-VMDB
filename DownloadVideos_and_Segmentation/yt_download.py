@@ -86,7 +86,7 @@ if __name__ == '__main__':
                     try:
                         streams = video.streams.filter(file_extension='mp4')
 
-                        if len(streams) > 0:
+                        if len(streams) > 0 and 'Ghost Lion' in video_title:
                             print(f'Downloading video: {video_title}')
                             streams[0].download(filename=video_title, max_retries=3)
                         else:

@@ -1,8 +1,8 @@
 from moviepy.video.io.ffmpeg_tools import ffmpeg_extract_subclip
 from moviepy.editor import VideoFileClip
 # Define the input video file and output directory
-input_video_file = '/home/rubens/pythonProjects/NesToMidGeneration/data/test_slicing_mp4/Super Mario Bros. (NES) Playthrough - NintendoComplete.mp4'
-output_directory = '/home/rubens/pythonProjects/NesToMidGeneration/data/test_slicing_mp4/output_chunks/'
+input_video_file = '/home/rubens/pythonProjects/NesToMidGeneration/data/test_slicing_mp4/Tecmo Super Bowl (NES) Playthrough [2022, Bengals season].mp4'
+output_directory = '/home/rubens/pythonProjects/NesToMidGeneration/data/test_slicing_mp4/Tecmo Super Bowl (NES) Playthrough [2022, Bengals season]/'
 # Define the duration of each segment in seconds (e.g., 15 seconds)
 segment_duration = 15
 # Create a VideoFileClip object from the input video
