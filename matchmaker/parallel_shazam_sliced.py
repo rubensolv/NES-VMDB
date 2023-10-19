@@ -100,7 +100,7 @@ if __name__ == '__main__':
         path_mp3_youtube = '/home/rubens/pythonProjects/NesToMidGeneration/nesmdb_mp3_from_mp4_sliced/325/'
         for file_name in os.listdir(path_mp3_youtube):
             game_id = file_name.split('_')[0]
-            result = match(game_id, os.path.join(path_mp3_youtube,file_name), nesmdb_database=nesmdb_database)
+            result = match(str(game_id), os.path.join(path_mp3_youtube,file_name), nesmdb_database=nesmdb_database)
             print('segment_mp3=',file_name,' music_suggested=',',',result)
         
     #all pool code here
