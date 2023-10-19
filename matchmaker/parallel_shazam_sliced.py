@@ -69,7 +69,7 @@ def generate_fingerprints(peaks, fan_value=10):
                 if 1 <= t_delta <= 10:
                     h = hashlib.sha1(f"{str(freq1)}|{str(freq2)}|{str(t_delta)}".encode('utf-8'))
 
-                    hashes.append(h.hexdigest()[0:20])
+                    hashes.append(h.hexdigest()[0:30])
     return hashes
 
 def get_youtube_mp3_fingerprints(youtube_mp3_path):
