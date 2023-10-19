@@ -122,7 +122,7 @@ del json_object
 
 """
 
-def get_youtube_mp3_fingerprints(youtube_mp3_path)
+def get_youtube_mp3_fingerprints(youtube_mp3_path):
     y, sr = librosa.load(youtube_mp3_path, sr=44100)
     D = generate_spectrogram(y, sr)
     peaks = find_peaks_by_axis(D)
