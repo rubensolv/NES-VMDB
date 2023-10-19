@@ -4,7 +4,7 @@ import os
 from multiprocessing import Process, Pool
 
 def slicing(video_name):
-    input_video_dir = '/home/rubens/pythonProjects/NesToMidGeneration/data/yt_nes_mp4/'
+    input_video_dir = '/home/rubens/pythonProjects/NesToMidGeneration/nesmdb_mp4/'
     # Define the input video file and output directory
     #input_video_file = '/home/rubens/pythonProjects/NesToMidGeneration/data/test_slicing_mp4/Super Mario Bros. (NES) Playthrough - NintendoComplete.mp4'
     input_video_file = os.path.join(input_video_dir, video_name)
@@ -26,7 +26,7 @@ def slicing(video_name):
         start_time = i * segment_duration
         end_time = (i + 1) * segment_duration
         # Define the output file name
-        output_file = os.path.join(output_directory, f'segment_{i + 1}.mp4')
+        output_file = os.path.join(output_directory, video_name.replace('.mp4','')+f'_segment_{i + 1}.mp4')
         # Extract the subclip
         ffmpeg_extract_subclip(input_video_file, start_time, end_time, targetname=output_file)
     # Close the VideoFileClip object
@@ -35,9 +35,9 @@ def slicing(video_name):
 
 if __name__ == "__main__":
     
-    concurrency = 4
+    concurrency = 20
     
-    input_video_dir = '/home/rubens/pythonProjects/NesToMidGeneration/data/yt_nes_mp4/'
+    input_video_dir = '/home/rubens/pythonProjects/NesToMidGeneration/nesmdb_mp4/'
 
     #Collect all video files
     videos = os.listdir(input_video_dir)    

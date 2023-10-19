@@ -9,13 +9,23 @@ import csv
 from multiprocessing import Pool
 
 def download_video(row):
-    name_file = 'nesmdb_mp4/'+row[0]+'.mp4'      
-    streams = YouTube(row[2]).streams.get_by_resolution('240p')
-    if streams is not None:
-        streams.download(filename=name_file, max_retries=3)                    
+    name_file = 'nesmdb_mp4/'+str(row[0])+'.mp4'      
+    if os.path.isfile(name_file):
+        print(name_file, ' already downloaded!')
+    elif len(row[2])==0:
+        print(name_file, ' No link!')
     else:
-        YouTube(row[2]).streams.get_lowest_resolution().download(filename=name_file, max_retries=3)
-        
+        print(name_file)
+        try:
+            streams = YouTube(row[2]).streams.get_by_resolution('240p')        
+            if streams is not None:
+                streams.download(filename=name_file, max_retries=3)                    
+            else:
+                YouTube(row[2]).streams.get_lowest_resolution().download(filename=name_file, max_retries=3)
+            print('--done  ',name_file) 
+        except:
+            print('----## error ##  ',name_file) 
+            
 if __name__ == '__main__':    
     
     rows = list()
@@ -30,7 +40,7 @@ if __name__ == '__main__':
                 rows.append(row)
                 line_count += 1            
     print(f'Processed {line_count} lines.')                    
-    pool = Pool(processes=5)
+    pool = Pool(processes=20)
     pool.map(download_video,rows)
     pool.close()    
         
