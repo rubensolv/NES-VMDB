@@ -99,7 +99,8 @@ if __name__ == '__main__':
     #testing method
     path_mp3_youtube = '/home/rubens/pythonProjects/NesToMidGeneration/nesmdb_mp3_from_mp4_sliced'
     for file in os.listdir(path_mp3_youtube):
-        match(file, os.path.join(path_mp3_youtube,file), nesmdb_database=nesmdb_database)
+        game_id = file.split('_')[0]
+        match(game_id, os.path.join(path_mp3_youtube,file), nesmdb_database=nesmdb_database)
 
     f.close()
     #all pool code here
