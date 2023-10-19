@@ -95,6 +95,12 @@ if __name__ == '__main__':
     MDB_FP_PATH = "/content/gdrive/MyDrive/BlackAdam/nesmd_fingerprints.json/"
     f = open(MDB_FP_PATH)
     nesmdb_database = json.load(f)
+
+    #testing method
+    path_mp3_youtube = '/home/rubens/pythonProjects/NesToMidGeneration/nesmdb_mp3_from_mp4_sliced'
+    for file in os.listdir(path_mp3_youtube):
+        match(file, os.path.join(path_mp3_youtube,file), nesmdb_database=nesmdb_database)
+
     f.close()
     #all pool code here
     # pool = Pool(processes=20)
