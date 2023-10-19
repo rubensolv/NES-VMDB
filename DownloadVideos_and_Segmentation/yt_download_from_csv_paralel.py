@@ -40,7 +40,11 @@ if __name__ == '__main__':
                 rows.append(row)
                 line_count += 1            
     print(f'Processed {line_count} lines.')                    
+<<<<<<< Updated upstream
     pool = Pool(processes=20)
+=======
+    pool = Pool(processes=4)
+>>>>>>> Stashed changes
     pool.map(download_video,rows)
     pool.close()    
         
