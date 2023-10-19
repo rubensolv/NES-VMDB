@@ -81,7 +81,7 @@ def get_youtube_mp3_fingerprints(youtube_mp3_path):
 def match(game_id, youtube_mp3_path, nesmdb_database):
     yt_fp = get_youtube_mp3_fingerprints(youtube_mp3_path)
     max = 0
-    current_match = ''
+    current_match = 'not found'
     nesmdb_available = nesmdb_database[game_id]
     for mdb_music, mdb_fp in nesmdb_available.items():
         intersection_size = len(set(mdb_fp).intersection(set(yt_fp)))
@@ -92,17 +92,17 @@ def match(game_id, youtube_mp3_path, nesmdb_database):
 
 if __name__ == '__main__':
     #Alterar aqui
-    MDB_FP_PATH = "/content/gdrive/MyDrive/BlackAdam/nesmd_fingerprints.json/"
+    MDB_FP_PATH = "nesmdb_fingerprints_pt1.json"
     with open(MDB_FP_PATH, 'r') as f:
-        nesmdb_database = json.loads(file.read())
+        nesmdb_database = json.loads(f.read())
 
-    #testing method
-    path_mp3_youtube = '/home/rubens/pythonProjects/NesToMidGeneration/nesmdb_mp3_from_mp4_sliced'
-    for file in os.listdir(path_mp3_youtube):
-        game_id = file.split('_')[0]
-        match(game_id, os.path.join(path_mp3_youtube,file), nesmdb_database=nesmdb_database)
-
-    f.close()
+        #testing method
+        path_mp3_youtube = '/home/rubens/pythonProjects/NesToMidGeneration/nesmdb_mp3_from_mp4_sliced/325/'
+        for file_name in os.listdir(path_mp3_youtube):
+            game_id = file_name.split('_')[0]
+            result = match(game_id, os.path.join(path_mp3_youtube,file_name), nesmdb_database=nesmdb_database)
+            print('segment_mp3=',file_name,' music_suggested=',',',result)
+        
     #all pool code here
     # pool = Pool(processes=20)
     # pool.map(download_video,rows)
