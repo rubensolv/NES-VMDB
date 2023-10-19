@@ -93,8 +93,8 @@ def match(game_id, youtube_mp3_path, nesmdb_database):
 if __name__ == '__main__':
     #Alterar aqui
     MDB_FP_PATH = "/content/gdrive/MyDrive/BlackAdam/nesmd_fingerprints.json/"
-    f = open(MDB_FP_PATH)
-    nesmdb_database = json.load(f)
+    with open(MDB_FP_PATH, 'r') as f:
+        nesmdb_database = json.loads(file.read())
 
     #testing method
     path_mp3_youtube = '/home/rubens/pythonProjects/NesToMidGeneration/nesmdb_mp3_from_mp4_sliced'
