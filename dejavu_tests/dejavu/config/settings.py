@@ -80,7 +80,7 @@ DEFAULT_AMP_MIN = 10
 # Number of cells around an amplitude peak in the spectrogram in order
 # for Dejavu to consider it a spectral peak. Higher values mean less
 # fingerprints and faster matching, but can potentially affect accuracy.
-PEAK_NEIGHBORHOOD_SIZE = 10  # 20 was the original value.
+PEAK_NEIGHBORHOOD_SIZE = 5 # 20 was the original value.
 
 # Thresholds on how close or far fingerprints can be in time in order
 # to be paired as a fingerprint. If your max is too low, higher values of
@@ -99,4 +99,4 @@ PEAK_SORT = True
 FINGERPRINT_REDUCTION = 20
 
 # Number of results being returned for file recognition
-TOPN = 2
+TOPN = 1

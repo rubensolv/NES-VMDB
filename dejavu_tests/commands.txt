@@ -1,0 +1,6 @@
+python dejavu_test.py --begin=0 --end=65 --config_file=dejavu.cnf.SAMPLE1 >> log_0_65.txt
+python dejavu_test.py --begin=66 --end=132 --config_file=dejavu.cnf.SAMPLE2 >> log_66_132.txt
+python dejavu_test.py --begin=133 --end=198 --config_file=dejavu.cnf.SAMPLE3 >> log_133_198.txt
+python dejavu_test.py --begin=199 --end=265 --config_file=dejavu.cnf.SAMPLE4 >> log_199_265.txt
+python dejavu_test.py --begin=266 --end=332 --config_file=dejavu.cnf.SAMPLE5 >> log_266_332.txt
+python dejavu_test.py --begin=333 --end=405 --config_file=dejavu.cnf.SAMPLE6 >> log_333_405.txt

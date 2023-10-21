@@ -35,6 +35,9 @@ class Dejavu:
             self.limit = None
         self.__load_fingerprinted_audio_hashes()
 
+    def return_db(self):
+        return self.db
+
     def __load_fingerprinted_audio_hashes(self) -> None:
         """
         Keeps a dictionary with the hashes of the fingerprinted songs, in that way is possible to check
@@ -62,6 +65,7 @@ class Dejavu:
         :param song_ids: song ids to delete from the database.
         """
         self.db.delete_songs_by_id(song_ids)
+        self.songhashes_set.clear()
 
     def fingerprint_directory(self, path: str, extensions: str, nprocesses: int = None) -> None:
         """
