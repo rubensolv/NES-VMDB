@@ -43,12 +43,22 @@ def init(configpath):
     return Dejavu(config)
 
 def get_games_id(min, max):
-    games_id = set()
+    games_id = dict()
     for f in os.listdir('nesmdb_mid_audio/'):
         value = int(f[0:3])
         if value >= min and value <= max:
-            games_id.add(f[0:3])
-    return sorted(list(games_id))
+            DIR = os.path.join('nesmd_mid_audio_sliced/',f[0:3])
+            total = len([name for name in os.listdir(DIR) if os.path.isfile(os.path.join(DIR, name))])
+            if total in games_id:
+                lst = games_id[total]
+                lst.add(f[0:3])
+                games_id[total] = lst
+            else:
+                item = set()
+                item.add(f[0:3])
+                games_id[total] = item
+            
+    return games_id
 
 def organize_mids_by_id(game_id):
     for f in os.listdir('nesmdb_mid_audio/'):
@@ -90,7 +100,7 @@ def cleaning_db(configpath, djv):
 if __name__ == '__main__':
      # Parse arguments
     parser = argparse.ArgumentParser(description='dejavu.py')
-    parser.add_argument('--begin', type=int, default='101')
+    parser.add_argument('--begin', type=int, default='141')
     parser.add_argument('--end', type=int, default='200')
     parser.add_argument('--config_file', type=str, default="dejavu.cnf.SAMPLE")
     args = parser.parse_args()
@@ -109,36 +119,37 @@ if __name__ == '__main__':
     #print("Total of Fingers: ", djv.db.get_num_fingerprints())
     #Finishing
     games_id = get_games_id(args.begin, args.end)
-    for game in games_id:
-        print("Generating fingers to ", game)
-        path_fingers = os.path.join('nesmd_mid_audio_sliced/',game)
-        djv.fingerprint_directory(path_fingers, [".mp3" ], 20)
-        print("Total of Fingers: ", djv.db.get_num_fingerprints())
-        # Recognize audio from a file
-        path_slices = os.path.join('nesmdb_mp3_from_mp4_sliced/',game)
-        if os.path.isdir(path_slices):
-            print("### Game id  ", game)
-            print("sliced_query,midi_suggested,input_confidence,fingerprinted_confidence")
-            path_mapping_log = 'mapping_game/Game_id_'+game+'.csv'
-            with open(path_mapping_log, 'w', encoding='UTF8') as f:            
-                f.write("sliced_query,midi_suggested,input_confidence,fingerprinted_confidence\n")
-            for file in os.listdir(path_slices):
-                if '.mp3' in file:                
-                    #print('Evaluating file ', file)
-                    path_file = os.path.join(path_slices,file)
-                    results = djv.recognize(FileRecognizer, path_file)
-                    #print(f"From file we recognized: {results}\n")
-                    try:
-                        result = results['results'][0]
-                        print(file+','+result['song_name'].decode('utf-8')+','+
-                            str(result['input_confidence'])+','+str(result['fingerprinted_confidence']) )    
-                        with open(path_mapping_log, 'a', encoding='UTF8') as f:
-                            f.write(file+','+result['song_name'].decode('utf-8')+','+
-                                str(result['input_confidence'])+','+str(result['fingerprinted_confidence'])+'\n')
-                    except:
-                        print('@@@ error @@@ Evaluating file ', file)                                
-                        print(f"From file we recognized: {results}\n")
-            else:
-                print("Game id", game, " has no slices")
-        djv = cleaning_db(config_file, djv)
+    for game_key in sorted(games_id.keys()):
+        for game in games_id[game_key]:
+            print("Generating fingers to ", game)
+            path_fingers = os.path.join('nesmd_mid_audio_sliced/',game)
+            djv.fingerprint_directory(path_fingers, [".mp3" ], 20)
+            print("Total of Fingers: ", djv.db.get_num_fingerprints())
+            # Recognize audio from a file
+            path_slices = os.path.join('nesmdb_mp3_from_mp4_sliced/',game)
+            if os.path.isdir(path_slices):
+                print("### Game id  ", game)
+                print("sliced_query,midi_suggested,input_confidence,fingerprinted_confidence")
+                path_mapping_log = 'mapping_game/Game_id_'+game+'.csv'
+                with open(path_mapping_log, 'w', encoding='UTF8') as f:            
+                    f.write("sliced_query,midi_suggested,input_confidence,fingerprinted_confidence\n")
+                for file in os.listdir(path_slices):
+                    if '.mp3' in file:                
+                        #print('Evaluating file ', file)
+                        path_file = os.path.join(path_slices,file)
+                        results = djv.recognize(FileRecognizer, path_file)
+                        #print(f"From file we recognized: {results}\n")
+                        try:
+                            result = results['results'][0]
+                            print(file+','+result['song_name'].decode('utf-8')+','+
+                                str(result['input_confidence'])+','+str(result['fingerprinted_confidence']) )    
+                            with open(path_mapping_log, 'a', encoding='UTF8') as f:
+                                f.write(file+','+result['song_name'].decode('utf-8')+','+
+                                    str(result['input_confidence'])+','+str(result['fingerprinted_confidence'])+'\n')
+                        except:
+                            print('@@@ error @@@ Evaluating file ', file)                                
+                            print(f"From file we recognized: {results}\n")
+                else:
+                    print("Game id", game, " has no slices")
+            djv = cleaning_db(config_file, djv)
         
