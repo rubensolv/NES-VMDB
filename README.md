@@ -1,4 +1,4 @@
-# NesToMidGeneration
+# The NES Video-Music Database
 FDG 2024 NES project.
 
 # Relevant links
