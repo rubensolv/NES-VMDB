@@ -1,9 +1,0 @@
-{
-    "database": {
-        "host": "127.0.0.1",
-        "user": "root",
-        "password": "63632323",
-        "database": "dejavu3"
-    },
-    "database_type": "mysql"
-}
