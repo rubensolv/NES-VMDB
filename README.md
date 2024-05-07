@@ -1,3 +1,9 @@
+# Downloading data (MP4,MP3, MIDI, and Dejavu) 
+https://drive.google.com/file/d/18W7_kIZIWuLfv6zQXErMAWmylisDA4T4/view?usp=sharing
+
+# Downloading CSV files to match MP4 to MIDI
+https://github.com/rubensolv/NES-VMDB/tree/main/7%20-%20Dataset%20Mapping/mapping_game
+
 # The NES Video-Music Database
 Paper on [FDG 2024](https://www.fdg.org.br/) named [The NES Music-Video Database: A Dataset of Symbolic Video Game Music
 Paired with Gameplay Videos](https://arxiv.org/abs/2404.04420).
