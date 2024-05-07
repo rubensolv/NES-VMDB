@@ -9,15 +9,16 @@ We introduce a novel dataset named NES-MVDB, comprising 98,940 gameplay videos f
 
 
 # Downloading Dataset
-To download the dataset [Click here](https://drive.google.com/drive/folders/1H9LaoBqB-6-DUpXte0-DRKa8ko2cJOjv?usp=sharing).
+To download the dataset [click here](https://drive.google.com/drive/folders/1H9LaoBqB-6-DUpXte0-DRKa8ko2cJOjv?usp=sharing).
 
+The dataset folder is divided into the following structure:
 
-Including explanation dataset folder
 ![alt text](https://github.com/rubensolv/NES-VMDB/blob/main/images/folder_structure.png)
 
+Folder **Midi** contains all the midi files from NES-MDB. All midi files were converted into MP3 and saved in folder **Audio**. This folder is organized by game id (see [here](https://github.com/rubensolv/NES-VMDB/blob/main/1%20-%20youtube%20vs%20mid%20files/nesvmdb_csv_youtube.csv) the games ids and names). Folder **Videos** contains the videos of all games in the dataset, organized by game id, and sliced in fragments of 15 seconds. Folder **Match_Video-Midi** contains csv files, and these files map the videos from folder **Videos** with the midis from folder **Midis**. File **Game_Ids.csv** is a csv file with the game id, name and some complementary information of each game in the dataset.
 
 
-The dataset can be found in the folder [7-Dataset Mapping]([https://github.com/cardoso-data-science/nesmvdb-bl](https://github.com/rubensolv/NES-VMDB/tree/main/7%20-%20Dataset%20Mapping/mapping_game)) and it is named with the ID of each game listed in the csv file [nesvmdb_csv_youtube](https://github.com/rubensolv/NES-VMDB/blob/main/1%20-%20youtube%20vs%20mid%20files/nesvmdb_csv_youtube.csv). 
+The mapping-dataset can be found in the folder [7-Dataset Mapping]([https://github.com/cardoso-data-science/nesmvdb-bl](https://github.com/rubensolv/NES-VMDB/tree/main/7%20-%20Dataset%20Mapping/mapping_game)) and it is named with the ID of each game listed in the csv file [nesvmdb_csv_youtube](https://github.com/rubensolv/NES-VMDB/blob/main/1%20-%20youtube%20vs%20mid%20files/nesvmdb_csv_youtube.csv). 
 In summary, each file is named as Game_id_*gameID*.csv. The mapping csv file has the following structure:
 
 ![alt text](https://github.com/rubensolv/NES-VMDB/blob/main/images/mapping_csv_structure.png)
