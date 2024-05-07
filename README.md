@@ -17,7 +17,7 @@ In summary, each file is named as Game_id_*gameID*.csv. The mapping csv file has
 The column sliced query contains the sliced fragment of the gameplay video extracted previously from YouTube. The column midi suggested file is related to the suggested music from NES-MDB which [Dejavu](https://github.com/worldveil/dejavu) (Shazam algorithm-based) did the match. The following columns are confidence values related to the Dejavu score. Great values mean better confidence between the sliced query fragment and the midi suggested. 
 
 
-# Generating the database (Under construction)
+<!--# Generating the database (Under construction)
 A summary to generate the database in eight steps:
 <ol>
  <li> We found and matched the gameplays on Youtube for each game existing in NES-MDB, generating the file nesvmdb_csv_youtube.csv. Code and data at folder 1 - YouTube vs mid files.</li>
@@ -28,7 +28,7 @@ A summary to generate the database in eight steps:
  <li> After all the previous steps, we have the required files to perform the match. Following the steps in https://github.com/worldveil/dejavu, you can install Dejavu. </li>
  <li> Copying the files on folder 6 - Install Dejavu, to your current Dejavu installation, you can start the matching process between the mp3's and mp4's slice and the NES-MDB mp3 files. If you want, you can download the full Dejavu folder with contents at this link https://drive.google.com/file/d/18W7_kIZIWuLfv6zQXErMAWmylisDA4T4/view?usp=sharing. </li>
  <li> The previous step produces the dataset save on folder 7 - Dataset Mapping/mapping_game. </li>
-</ol>
+</ol>-->
 
 # Relevant links
 
