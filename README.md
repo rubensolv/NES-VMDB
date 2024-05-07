@@ -9,7 +9,8 @@ We introduce a novel dataset named NES-MVDB, comprising 98,940 gameplay videos f
 
 
 # Downloading Dataset
-To download the dataset [Click here](https://drive.google.com/drive/folders/1H9LaoBqB-6-DUpXte0-DRKa8ko2cJOjv?usp=sharing)
+To download the dataset [Click here](https://drive.google.com/drive/folders/1H9LaoBqB-6-DUpXte0-DRKa8ko2cJOjv?usp=sharing).
+
 The dataset can be found in the folder [7-Dataset Mapping]([https://github.com/cardoso-data-science/nesmvdb-bl](https://github.com/rubensolv/NES-VMDB/tree/main/7%20-%20Dataset%20Mapping/mapping_game)) and it is named with the ID of each game listed in the csv file [nesvmdb_csv_youtube](https://github.com/rubensolv/NES-VMDB/blob/main/1%20-%20youtube%20vs%20mid%20files/nesvmdb_csv_youtube.csv). 
 In summary, each file is named as Game_id_*gameID*.csv. The mapping csv file has the following structure:
 
