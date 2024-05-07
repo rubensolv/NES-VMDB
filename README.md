@@ -14,7 +14,7 @@ To download the dataset [Click here](https://drive.google.com/drive/folders/1H9L
 The dataset can be found in the folder [7-Dataset Mapping]([https://github.com/cardoso-data-science/nesmvdb-bl](https://github.com/rubensolv/NES-VMDB/tree/main/7%20-%20Dataset%20Mapping/mapping_game)) and it is named with the ID of each game listed in the csv file [nesvmdb_csv_youtube](https://github.com/rubensolv/NES-VMDB/blob/main/1%20-%20youtube%20vs%20mid%20files/nesvmdb_csv_youtube.csv). 
 In summary, each file is named as Game_id_*gameID*.csv. The mapping csv file has the following structure:
 
-![alt text](https://github.com/rubensolv/NES-VMDB/blob/main/images/mapping_csv_structure.png)
+![alt text](https://github.com/rubensolv/NES-VMDB/blob/main/images/folder_structure.png)
  
 The column sliced query contains the sliced fragment of the gameplay video extracted previously from YouTube. The column midi suggested file is related to the suggested music from NES-MDB which [Dejavu](https://github.com/worldveil/dejavu) (Shazam algorithm-based) did the match. The following columns are confidence values related to the Dejavu score. Great values mean better confidence between the sliced query fragment and the midi suggested. 
 
