@@ -27,6 +27,7 @@ To generate the database we performed six steps:
  <li> Copying the files on folder 6 - Install Dejavu, to your current Dejavu installation, you can start the matching process between the mp3's slice and the NES-MDB mp3 files. </li>
  <li> The previous step produces the dataset save on folder 7 - Dataset Mapping/mapping_game.</li>
 </ol>
+
 # Relevant links
 
 Nes longplay videos (library)
