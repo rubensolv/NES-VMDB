@@ -22,7 +22,7 @@ To generate the database we performed six steps:
  <li> Using the csv, we download each Youtube video in mp4 format. The code to perform the download is placed in folder 2 - Downloading Youtube Videos</li>
  <li> After downloading all the videos, we sliced every gameplay in files of 15 seconds. The code to perform this process is placed at 3 - Slicing Youtube Videos </li>
  <li> Using the slices generated from the previous step, we extracted the respective mp3 audio files from every slice. The code for this process can be found in folder 4 - Extracting MP3 from slices.</li>
- <li> At this point, Dejavu needs all the files (to build up the library and to find the matches) as mp3 files. So, we convert all the mid/vgm files on NES-MDB to MP3. Code in folder 5 - Convert VGM (NESMDB) to MP3)</li>
+ <li> At this point, Dejavu needs all the files (to build up the library and to find the matches) as mp3 files. So, we convert all the mid/vgm files on NES-MDB to MP3. Code in folder 5 - Convert VGM (NESMDB) to MP3). We can download this content [here](https://drive.google.com/drive/folders/1UMrehR6_JNEHfNmTKI1HCPZxLJzuLKhh?usp=sharing). </li>
  <li> After all the previous steps, we have the required files to perform the match. Following the steps in https://github.com/worldveil/dejavu, you can install Dejavu. </li>
  <li> Copying the files on folder 6 - Install Dejavu, to your current Dejavu installation, you can start the matching process between the mp3's slice and the NES-MDB mp3 files. </li>
  <li> The previous step produces the dataset save on folder 7 - Dataset Mapping/mapping_game.</li>
