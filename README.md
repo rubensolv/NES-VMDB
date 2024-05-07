@@ -1,5 +1,5 @@
-# Downloading data (MP4,MP3, MIDI, and Dejavu) 
-https://drive.google.com/file/d/18W7_kIZIWuLfv6zQXErMAWmylisDA4T4/view?usp=sharing
+# Download MP4 Slices
+https://drive.google.com/drive/folders/1SS-AfMczVaef56L9zsxaJJsr28eiHosW?usp=sharing
 
 # Downloading CSV files to match MP4 to MIDI
 https://github.com/rubensolv/NES-VMDB/tree/main/7%20-%20Dataset%20Mapping/mapping_game
