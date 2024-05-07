@@ -21,28 +21,14 @@ To generate the database we performed six steps:
  <li> We found and matched the gameplays on Youtube for each game existing in NES-MDB, generating the file nesvmdb_csv_youtube.csv. Code and data at folder 1 - YouTube vs mid files </li>
  <li> Using the csv, we download each Youtube video in mp4 format. The code to perform the download is placed in folder 2 - Downloading Youtube Videos</li>
  <li> After downloading all the videos, we sliced every gameplay in files of 15 seconds. The code to perform this process is placed at 3 - Slicing Youtube Videos </li>
- <li> </li>
+ <li> Using the slices generated from the previous step, we extracted the respective mp3 audio files from every slice. The code for this process can be found in folder 4 - Extracting MP3 from slices.</li>
+ <li> At this point, Dejavu needs all the files (to build up the library and to find the matches) as mp3 files. So, we convert all the mid/vgm files on NES-MDB to MP3. Code in folder 5 - Convert VGM (NESMDB) to MP3)</li>
+ <li> After all the previous steps, we have the required files to perform the match. Following the steps in https://github.com/worldveil/dejavu, you can install Dejavu. </li>
+ <li> Copying the files on folder 6 - Install Dejavu, to your current Dejavu installation, you can start the matching process between the mp3's slice and the NES-MDB mp3 files. </li>
+ <li> The previous step produces the dataset save on folder 7 - Dataset Mapping/mapping_game.</li>
 </ol>
 # Relevant links
 
 Nes longplay videos (library)
 https://www.youtube.com/watch?v=ezydTKjg_nE&list=PL3gSj_kh1fHtxy0_CDUwa6UPCO3PSf87-
 
-# Commands
-python3 -m venv venv
-
-pip install --update pip
-
-pip install -r requirements.txt
-
-python3 mp3_transitions_collector_parallel.py
-
-python3 segment_video_sec_parallel.py
-
-# current pipeline
-
-Extrair os mp3 dos videos que estao na pasta youtube_mp4_full usando o ffmpeg; for i in *.mp4; do ffmpeg -i "$i" -vn -ac 1 -f mp3 "${i%.*}".mp3; done
-
-Gerar as transicoes (cut_points) para serem utilizadas para cortar o video usando as classes https://github.com/rubensolv/NesToMidGeneration/blob/main/mp3_transition_collector_parallel.py ou https://github.com/rubensolv/NesToMidGeneration/blob/main/mp3_transition_collector_class.py
-
-Copiar os arquivos gerados (transicoes ou cut_points) e utilizar a classe https://github.com/rubensolv/NesToMidGeneration/blob/main/segment_video_sec_parallel.py para, dado o txt das transicoes, realizar a segmentacao do MP4.
