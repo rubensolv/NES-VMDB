@@ -1,8 +1,3 @@
-# Download MP4 Slices
-https://drive.google.com/drive/folders/1SS-AfMczVaef56L9zsxaJJsr28eiHosW?usp=sharing
-
-# Downloading CSV files to match MP4 to MIDI
-https://github.com/rubensolv/NES-VMDB/tree/main/7%20-%20Dataset%20Mapping/mapping_game
 
 # The NES Video-Music Database
 Paper on [FDG 2024](https://www.fdg.org.br/) named [The NES Music-Video Database: A Dataset of Symbolic Video Game Music
@@ -13,7 +8,7 @@ We introduce a novel dataset named NES-MVDB, comprising 98,940 gameplay videos f
 
 
 
-# Downloading Dataset
+# [Downloading Dataset](https://drive.google.com/drive/folders/1H9LaoBqB-6-DUpXte0-DRKa8ko2cJOjv?usp=sharing)
 The dataset can be found in the folder [7-Dataset Mapping]([https://github.com/cardoso-data-science/nesmvdb-bl](https://github.com/rubensolv/NES-VMDB/tree/main/7%20-%20Dataset%20Mapping/mapping_game)) and it is named with the ID of each game listed in the csv file [nesvmdb_csv_youtube](https://github.com/rubensolv/NES-VMDB/blob/main/1%20-%20youtube%20vs%20mid%20files/nesvmdb_csv_youtube.csv). 
 In summary, each file is named as Game_id_*gameID*.csv. The mapping csv file has the following structure:
 
