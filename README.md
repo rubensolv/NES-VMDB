@@ -1,30 +1,24 @@
 
 # The NES Video-Music Database
-Paper on [FDG 2024](https://www.fdg.org.br/) named [The NES Music-Video Database: A Dataset of Symbolic Video Game Music
-Paired with Gameplay Videos](https://arxiv.org/abs/2404.04420).
+The NES Video-Music Database (NES-MVDB) is a dataset of 98,940 short (15 seconds) gameplay videos from 386 NES games, each paired with its original music piece in symbolic format (MIDI). NES-MVDB is built upon the Nintendo Entertainment System Music Database [(NES-MDB)](https://github.com/chrisdonahue/nesmdb#dataset-information). 
 
+- [Dataset on Google Drive](https://drive.google.com/drive/folders/1H9LaoBqB-6-DUpXte0-DRKa8ko2cJOjv?usp=sharing)
+- [Paper on arXiv](https://arxiv.org/abs/2404.04420)
 
-We introduce a novel dataset named NES-MVDB, comprising 98,940 gameplay videos from 386 NES games, each paired with its original music piece in symbolic format (MIDI). NES-MVDB is built upon the Nintendo Entertainment System Music Database (NES-MDB), encompassing 5,278 music pieces from the soundtracks of 397 NES games. Our approach involves collecting long-play videos for 386 games in the original dataset, slicing them into 15-second-long clips, and extracting the audio from each clip. Subsequently, we apply an audio fingerprinting algorithm (similar to Shazam) to automatically identify the corresponding piece in the [NES-MDB](https://github.com/chrisdonahue/nesmdb#dataset-information) dataset.  Additionally to the dataset, we introduce a baseline method based on the [Controllable Music Transformer](https://github.com/cardoso-data-science/nesmvdb-bl) to generate NES music conditioned on gameplay clips. We evaluated this approach with objective metrics, and the results showed that the conditional CMT improves musical structural quality when compared to its unconditional counterpart. Moreover, we used a neural classifier to predict the game genre of the generated pieces. Results showed that they matched the genre of their gameplay clips as accurately as the human pieces.
+# Dataset structure
+The dataset is organized into 4 directories:
+- **Midi**: all the original midi files from NES-MDB.
+- **Audio**: all the original midi files from NES-MDB synthesized as MP3 with the original NES synth.
+- **Videos**: all gameplay videos in the dataset, organized by game id, and sliced in fragments of 15 seconds
+- **Video-Midi**: a csv file with the game id, name, and metadata of each game in the dataset.
 
-
-
-# Downloading Dataset
-To download the dataset [click here](https://drive.google.com/drive/folders/1H9LaoBqB-6-DUpXte0-DRKa8ko2cJOjv?usp=sharing).
-
-The dataset folder is divided into the following structure:
-
-![alt text](https://github.com/rubensolv/NES-VMDB/blob/main/images/folder_structure.png)
-
-Folder **Midi** contains all the midi files from NES-MDB. All midi files were converted into MP3 and saved in folder **Audio**. This folder is organized by game id (see [here](https://github.com/rubensolv/NES-VMDB/blob/main/1%20-%20youtube%20vs%20mid%20files/nesvmdb_csv_youtube.csv) the games ids and names). Folder **Videos** contains the videos of all games in the dataset, organized by game id, and sliced in fragments of 15 seconds. Folder **Match_Video-Midi** contains csv files, and these files map the videos from folder **Videos** with the midis from folder **Midis**. File **Game_Ids.csv** is a csv file with the game id, name and some complementary information of each game in the dataset.
-
-
-The mapping-dataset can be found in the folder [7-Dataset Mapping]([https://github.com/cardoso-data-science/nesmvdb-bl](https://github.com/rubensolv/NES-VMDB/tree/main/7%20-%20Dataset%20Mapping/mapping_game)) and it is named with the ID of each game listed in the csv file [nesvmdb_csv_youtube](https://github.com/rubensolv/NES-VMDB/blob/main/1%20-%20youtube%20vs%20mid%20files/nesvmdb_csv_youtube.csv). 
-In summary, each file is named as Game_id_*gameID*.csv. The mapping csv file has the following structure:
+The mapping csv file has the following structure:
 
 ![alt text](https://github.com/rubensolv/NES-VMDB/blob/main/images/mapping_csv_structure.png)
  
-The column sliced query contains the sliced fragment of the gameplay video extracted previously from YouTube. The column midi suggested file is related to the suggested music from NES-MDB which [Dejavu](https://github.com/worldveil/dejavu) (Shazam algorithm-based) did the match. The following columns are confidence values related to the Dejavu score. Great values mean better confidence between the sliced query fragment and the midi suggested. 
-
+- `sliced query`:  contains the sliced fragment of the gameplay video extracted previously from YouTube. 
+- `midi suggested`: file is related to the suggested music from NES-MDB which [Dejavu](https://github.com/worldveil/dejavu) (Shazam algorithm-based) did the match.
+- `sliced query` and `sliced query` are confidence values related to the Dejavu score. Great values mean better confidence between the sliced query fragment and the midi suggested. 
 
 <!--# Generating the database (Under construction)
 A summary to generate the database in eight steps:
@@ -39,8 +33,15 @@ A summary to generate the database in eight steps:
  <li> The previous step produces the dataset save on folder 7 - Dataset Mapping/mapping_game. </li>
 </ol>-->
 
-# Relevant links
+## Citing this Dataset
 
-Nes longplay videos (library)
-https://www.youtube.com/watch?v=ezydTKjg_nE&list=PL3gSj_kh1fHtxy0_CDUwa6UPCO3PSf87-
+This dataset was presented in the paper [The NES Video-Music Database: A Dataset of Symbolic Video Game Music Paired with Gameplay Videos](https://arxiv.org/abs/2404.04420), so if you use the dataset, please cite:
 
+```
+@article{cardoso2024nes,
+  title={The NES Video-Music Database: A Dataset of Symbolic Video Game Music Paired with Gameplay Videos},
+  author={Cardoso, Igor and Moraes, Rubens O and Ferreira, Lucas N},
+  journal={arXiv preprint arXiv:2404.04420},
+  year={2024}
+}
+```
