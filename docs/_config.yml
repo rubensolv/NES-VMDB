@@ -36,8 +36,8 @@ links:
     url: https://github.com/rubensolv/NES-VMDB
     icon: /assets/imgs/github.svg
 
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/NES-VMDB" # the subpath of your site, e.g. /blog
+url: "https://rubensolv.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: jekyllrb
 github_username:  jekyll
 
