@@ -8,7 +8,7 @@ title: Home
     <ul style="list-style: none; display: inline; margin: 0 auto; padding: 0;">
         {% for link in site.links %}
         <li style="display: inline-block; margin: 0px 20px;">
-            <a href="{{ link.url }}"><img src="{{ link.icon }}"/></a>
+            <a href="{{ link.url }}"><img src="{{ link.icon | relative_url }}"/></a>
             <h4 style="margin: 0; padding: 0;">{{ link.name }}</h4>
         </li>
         {% endfor %}
