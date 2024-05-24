@@ -21,6 +21,21 @@ The NES Video-Music Database (NES-MVDB) is a dataset of 98,940 short (15 seconds
 ### Examples
 ---
 
+<div style="margin: 20px;">
+    <h3>MegaMan</h3>
+    <div>
+        <video width="200px" controls>
+        <source src="{{ '/assets/videos/224_segment_3.mp4' | relative_url }}" type="video/mp4">
+        Your browser does not support the video tag.
+        </video>
+        <img src="{{ '/assets/videos/224_segment_3.png' | relative_url }}" width="354px"/><br>
+        <audio controls>
+            <source src="{{ '/assets/videos/224_segment_3.mp3' | relative_url }}" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+</div>
+
 ### Dataset structure
 ---
 
